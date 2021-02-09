@@ -16,8 +16,8 @@ __Step 2: CREATE AN EC2 Windows Instance and Install CodeDeploy on it__
 CodeDeploy is a software package that allows that instance to be used in CodeDeploy deployments
 
 1. Before creating the instance, we must create a __Role__ that will allow appropriate access before and during deployment (role = temporary permission)
-So we go to IAM, create a role for AWS Services specifying that we want to allow EC2 instance to call other AWS services and name the role __EC2InstanceRole__ and attach the policy titled __*AmazonEC2RoleforAWSCodeDeploy*__
-2. Now we will launch an instance so we go to EC2 then launch an instance by selecting the __Microsoft Windows Server 2019 Base with Containers__ AMI
+So we go to IAM, create a role for AWS Services specifying that we want to allow EC2 instance to call other AWS services and name the role __*EC2InstanceRole*__ and attach the policy titled __*AmazonEC2RoleforAWSCodeDeploy*__
+2. Now we will launch an instance so we go to EC2 then launch an instance by selecting the __*Microsoft Windows Server 2019 Base with Containers*__ AMI
 3. In configure instances, select to instantiate 2 instances and select auto-assign IP enabled and select EC2Instance role that we previously created. You also need to specify the following script in the advanced section and put the following text:
 
 *<powershell>  
@@ -26,13 +26,14 @@ powershell.exe -Command Read-S3Object -BucketName bucket-name/latest -Key codede
 Start-Process -Wait -FilePath c:\temp\codedeploy-agent.msi -WindowStyle Hidden
 </powershell>*
 
-where the bucket-name is the name of the bucket specific to that region. This script basically installs CodeDeploy agent on our instance. For our case, since our instance is hosted in the North Virginia (US-East) region, therefore the bucket name is: __aws-codedeploy-us-east-1__
+where the bucket-name is the name of the bucket specific to that region. This script basically installs CodeDeploy agent on our instance. For our case, since our instance is hosted in the North Virginia (US-East) region, therefore the bucket name is: __*aws-codedeploy-us-east-1*__
 
 4. In the tags section, add the Name tag, SimpleCodePipelineDemo
 5. In the next step, configure the Security Groups to open port 80 so that the public endpoint of your instance is reachable
 6. Generate a new key pair and download the private key pair and store it in a safe and secure location
 
 __Step 3: CREATE an application in CodeDeploy__
+
 In CodeDeploy, an application is just a name or an identifier that you use to point to specific code.
 
 1. Go to CodeDeploy -> applications and create a new application. You can name it SimpleCodeDeployDemo and select EC2/On-Premises as computer platform
