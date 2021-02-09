@@ -8,5 +8,7 @@ Create a simple pipeline that uses CodeDeploy to deploy a sample application fro
 __Step 1: CREATE AN S3 BUCKET FOR YOUR APPLICATION__
 1. Create an AWS Bucket for your pipeline, we will call it aws-bucket-for-code-pipeline (remember, no upperclase alphabets)
 2: Go to the properties and enable versioning on bucket (versioning preserves all versions of objects and helps recover from accidental deletions)
-3: Upload Sample_App_Linux.zip to the bucket (remember to always keep your application zipped)
+3: Upload Sample_App_Windows.zip to the bucket (remember to always keep your application zipped)
 
+__Step 2: CREATE AN EC2 Windows Instance and Install CodeDeploy on it__
+1. Create an AWS Bucket for your pipeline, we will call it aws-bucket-for-code-pipeline (remember, no upperclase alphabets)
