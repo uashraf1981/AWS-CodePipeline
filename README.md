@@ -45,6 +45,25 @@ In CodeDeploy, an application is just a name or an identifier that you use to po
 
 At this point, we need to create a Load Balancer which will basically ensure that load-balancing is done and more importantly, that the traffic to instances is temporarily blocked to instances on which code is being deployed and redirected to ones on which it is not and then redirected again to the first one once the deployment is complete and finally, once all code updates are done, the traffic is dynamically balanced again between the two (or X) instances.
 
+Go to Load Balancing and create a new Application Load Balancer (ALB). Remember, you need to specify at least two subnets in two different AZs (i.e. two Availability Zones because each displayed subnet for selection is in a different availability zone) so that is one AZ goes down, at least the ALB can keep on working in the other one i.e. reliability. Select IPv4 as address type. NOTE: if you selected an HTTPS listener (port 443 for secure communication), you MUST also specify a certificate (perhaps from AWS Certificate Manager), otherwise for HTTP it is OK.
+
+8. At the last step of creating an ALB, you need to specify a security group because the ALB needs to communicate with instances on specified port for communication as well as on another port for health check. Just create a new Security Group which will automatically contain a default rule (for port 80 usually)
+
+9. You need to configure routing i.e. whether it is for instances (by ID or IP) or AWS Lambda etc. 
+
+10. The next screen simply shows the instances, so you can easily select them.
+
+11. Now go back to the deployment screen and select the ALB and then create the deployment.
+
+__Step 4: Create your First Pipeline in AWS CodeDeploy__
+
+1. Open CodePipeline from the AWS management console
+2. Create a new pipeline and name it __SimpleCodeDeployDemo-CodePipeline__
+3. You need to create a new service role to allow for the pipeline to access AWS resources during the automated deployment. The role name and policy are already given by default and are in the following format: __AWSCodePipelineServiceRole-us-west-2-SimpleCodeDeployDemo-SimpleCodeDeployDemo-CodePipeline__ that is:
+
+AWSCodePipelineServiceRole-region-pipelineName
+
+4. 
 
 
 
