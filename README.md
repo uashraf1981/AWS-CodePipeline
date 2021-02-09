@@ -63,7 +63,15 @@ __Step 4: Create your First Pipeline in AWS CodeDeploy__
 
 AWSCodePipelineServiceRole-region-pipelineName
 
-4. 
+4. In the next phase, you need to specify the source for the pipeline. In our case, it is AWS S3, so we select the correct bucket after selecting S3
+5. The __*Object Key*__ is the name of the zipped file which contains the application including the extension
+6. Next screen allows you to configure how to detect changes to your source i.e. app in S3, default is AWS CloudWatch Events which is fine
+7. In the __Build Stage__ settings, skip it
+8. In the __Deploy Provider__, select __AWS CodeDeploy__
+9. Selection region (defaults to this one), select application and select the deployment group
+
+Results, Well the deployment failed because the bucket was not located in us-west region
+
 
 
 
