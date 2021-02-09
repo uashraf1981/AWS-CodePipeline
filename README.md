@@ -38,7 +38,11 @@ In CodeDeploy, an application is just a name or an identifier that you use to po
 
 1. Go to CodeDeploy -> applications and create a new application. You can name it SimpleCodeDeployDemo and select EC2/On-Premises as computer platform
 2. Create a deployment group for your application and name it SimpleDemoDeploymentGroup
-3. But you need to create/assign a service role to this deployment group so that the CodeDeploy service can access other AWS resources when required. For this, you must 
+3. But you need to create/assign a service role to this deployment group so that the CodeDeploy service can access other AWS resources when required. For this, you must create a new role and select CodeDeploy in the list of given services, so an appropriate policy would be attached to the role, now crete and copy the ARN and then paste it in the CodeDeployment role tab
+4. Select In-Place as the deployment type (this redeploys on the same instance with a small downtime). The other option is Blue/Green in which case new instances are created and once code is deployed on them and they are registered with the load-balancer, then the old instances are deregistered and can be deleted.
+5. Select EC2 instances as the deployment target and add the same tags that you used when creating the two instances to correctly identify the correct instances
+6. In Deployment type: OneAtATime deployment mode
+
 
 
 
