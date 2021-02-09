@@ -43,6 +43,9 @@ In CodeDeploy, an application is just a name or an identifier that you use to po
 5. Select EC2 instances as the deployment target and add the same tags that you used when creating the two instances to correctly identify the correct instances
 6. In Deployment type: OneAtATime deployment mode
 
+At this point, we need to create a Load Balancer which will basically ensure that load-balancing is done and more importantly, that the traffic to instances is temporarily blocked to instances on which code is being deployed and redirected to ones on which it is not and then redirected again to the first one once the deployment is complete and finally, once all code updates are done, the traffic is dynamically balanced again between the two (or X) instances.
+
+
 
 
 
