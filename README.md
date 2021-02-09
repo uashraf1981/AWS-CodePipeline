@@ -11,4 +11,11 @@ __Step 1: CREATE AN S3 BUCKET FOR YOUR APPLICATION__
 3: Upload Sample_App_Windows.zip to the bucket (remember to always keep your application zipped)
 
 __Step 2: CREATE AN EC2 Windows Instance and Install CodeDeploy on it__
-1. Create an AWS Bucket for your pipeline, we will call it aws-bucket-for-code-pipeline (remember, no upperclase alphabets)
+CodeDeploy is a software package that allows that instance to be used in CodeDeploy deployments
+
+1. Before creating the instance, we must create a __Role__ that will allow appropriate access before and during deployment (role = temporary permission)
+2. So we go to IAM, create a role for AWS Services specifying that we want to allow EC2 instance to call other AWS services and name the role __EC2InstanceRole__
+3. Now we will launch an instance so we go to EC2 then launch an instance by selecting the __Microsoft Windows Server 2019 Base with Containers__ AMI
+4. In configure instances, select to instantiate 2 instances and select auto-assign IP enabled and select EC2Instance role that we previously created
+
+
