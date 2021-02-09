@@ -16,7 +16,7 @@ CodeDeploy is a software package that allows that instance to be used in CodeDep
 1. Before creating the instance, we must create a __Role__ that will allow appropriate access before and during deployment (role = temporary permission)
 2. So we go to IAM, create a role for AWS Services specifying that we want to allow EC2 instance to call other AWS services and name the role __EC2InstanceRole__
 3. Now we will launch an instance so we go to EC2 then launch an instance by selecting the __Microsoft Windows Server 2019 Base with Containers__ AMI
-4. In configure instances, select to instantiate 2 instances and select auto-assign IP enabled and select EC2Instance role that we previously created. You also need to specify the startup script in the advanced section and put the following text:
+4. In configure instances, select to instantiate 2 instances and select auto-assign IP enabled and select EC2Instance role that we previously created. You also need to specify the following script in the advanced section and put the following text:
 
 *<powershell>  
 New-Item -Path c:\temp -ItemType "directory" -Force
@@ -24,7 +24,12 @@ powershell.exe -Command Read-S3Object -BucketName bucket-name/latest -Key codede
 Start-Process -Wait -FilePath c:\temp\codedeploy-agent.msi -WindowStyle Hidden
 </powershell>*
 
-where the bucket-name is the name of the bucket specific to that region that contains the CodeDeploy resoource kit for assisting the deployment
+where the bucket-name is the name of the bucket specific to that region. This script basically installs CodeDeploy agent on our instance. For our case, since our instance is hosted in the North Virginia (US-East) region, therefore the bucket name is: __aws-codedeploy-us-east-1__
+
+5. In the tags section, add the Name tag, SimpleCodePipelineDemo
+6. In the next step
+
+
 
 
 
