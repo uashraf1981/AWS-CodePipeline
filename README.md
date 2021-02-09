@@ -1,4 +1,6 @@
-# AWS-CodePipeline
+# AWS-CodeDeploy
+
+__AWS CodeDeploy vs. AWS CodePipeline:__ AWS CodeDeploy is more of the Deployment As A Service (DAAS) wherein once your code is ready, you can use CodeDeploy to automate the process of deploying your code across EC2 instances and other resources. Whereas AWS CodePipeline is more of a *Continuous Delivery* type of service which automates code deplpoyments to a number of resources including even on-premise servers. Pipeline deploys code EVERY TIME that it changes. Also, you can configure several different kind of deployments such as in staging, production etc.
 
 Create a simple pipeline that uses CodeDeploy to deploy a sample application from an Amazon S3 bucket to Amazon EC2 instances running Amazon Linux. After the two-stage pipeline is created, I will add a third stage.
 
@@ -27,7 +29,12 @@ Start-Process -Wait -FilePath c:\temp\codedeploy-agent.msi -WindowStyle Hidden
 where the bucket-name is the name of the bucket specific to that region. This script basically installs CodeDeploy agent on our instance. For our case, since our instance is hosted in the North Virginia (US-East) region, therefore the bucket name is: __aws-codedeploy-us-east-1__
 
 5. In the tags section, add the Name tag, SimpleCodePipelineDemo
-6. In the next step
+6. In the next step, configure the Security Groups to open port 80 so that the public endpoint of your instance is reachable
+7. Generate a new key pair and download the private key pair and store it in a safe and secure location
+
+__Step 3: CREATE an application in CodeDeploy__
+In CodeDeploy, an application is just a name or an identifier that you use to point to specific code
+
 
 
 
