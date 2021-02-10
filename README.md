@@ -1,4 +1,4 @@
-# AWS-CodeDeploy
+# AWS-Creating A Simple Pipeline
 
 __AWS CodeDeploy vs. AWS CodePipeline:__ AWS CodeDeploy is more of the Deployment As A Service (DAAS) wherein once your code is ready, you can use CodeDeploy to automate the process of deploying your code across EC2 instances and other resources. Whereas AWS CodePipeline is more of a *Continuous Delivery* type of service which automates code deplpoyments to a number of resources including even on-premise servers. Pipeline deploys code EVERY TIME that it changes. Also, you can configure several different kind of deployments such as in staging, production etc.
 
