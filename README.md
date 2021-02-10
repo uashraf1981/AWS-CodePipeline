@@ -98,6 +98,8 @@ You can check the status of CodeDeployAgent on the Windows Server:
 
 Hopefully, after adding the exception, the CodeDeployAgent would be running.
 
+Sanity check # 1 turned out to be the problem, so the pipeline is deploying successfully!!
+
 
 
 
