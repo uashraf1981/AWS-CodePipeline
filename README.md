@@ -70,7 +70,19 @@ AWSCodePipelineServiceRole-region-pipelineName
 8. In the __Deploy Provider__, select __AWS CodeDeploy__
 9. Selection region (defaults to this one), select application and select the deployment group
 
-Results, Well the deployment failed because the bucket was not located in us-west region
+__*REMEMBER: The bucket needs to be in the same region as the EC2 instances and the Deployment Group/Pipeline.*__
+Results, Well the deployment failed because the bucket was not located in us-west region so we had to create another bucket, delete the older one. We then updated the codepipeline by changing the bucket name. Fortunately, AWS automatically prompted that it will also change the AWS CloudWatch Event mapping to the new event. Then we do a __Release Change__ to submit the changes.
+
+Main Idea:
+Create S3 bucket and host the source file and enable versioning
+Create instances on which you want the deployment to run, you must provision a service role to allow EC2 to access resources
+Create a LoadBalancer which will help regulate traffic to instances during deployment and you need to create a SG since ALB needs to access instances on ports
+CodeBuild: Create an application and deployment group and give the instances as targets of that group and also specify the ALB
+CodePipeline: Create a pipieline and also create a service role for it to access AWS resources
+              Specify AWS CodeDeploy as deployment provider, select the application and different stages and monitoring mechanism (e.g. CloudWatch Events)
+Launch the pipeline
+
+
 
 
 
