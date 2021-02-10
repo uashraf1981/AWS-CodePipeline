@@ -80,7 +80,14 @@ Create a LoadBalancer which will help regulate traffic to instances during deplo
 CodeBuild: Create an application and deployment group and give the instances as targets of that group and also specify the ALB
 CodePipeline: Create a pipieline and also create a service role for it to access AWS resources
               Specify AWS CodeDeploy as deployment provider, select the application and different stages and monitoring mechanism (e.g. CloudWatch Events)
-Launch the pipeline
+
+The pipeline failed again, let's explore what went wrong. We are going to do the following sanity checks:
+
+1. Check whether AWS CodeDeploy agent has been properly installed. Need to assign instance role for Session Manager to be able to access the instance so that we can SSH into the instance check for problems.
+
+An __Instance Profile__ is a container that passes IAM role information to an Amazon Elastic Compute Cloud (Amazon EC2) instance at launch. 
+
+2. 
 
 
 
