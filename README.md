@@ -87,7 +87,16 @@ The pipeline failed again, let's explore what went wrong. We are going to do the
 
 An __Instance Profile__ is a container that passes IAM role information to an Amazon Elastic Compute Cloud (Amazon EC2) instance at launch. 
 
-2. 
+** Was a major headache sorting out why Session Manager won't work. Then tried RDP, but for that you need to open up port 3389 (RDP). Had to RDP into the instance and manually install the SSM agent.
+The probem turned out to be that Windows Defender after updating was blocking the CodeDeployAgent so add exception for that:
+
+Write-Host ("Adding Windows Defender exclude for CodeDeploy...")
+Add-MpPreference -ExclusionPath ("C:\ProgramData\Amazon\CodeDeploy","$env:windir\Temp")
+
+You can check the status of CodeDeployAgent on the Windows Server:
+ powershell.exe -Command Get-Service -Name codedeployagent 
+
+Hopefully, after adding the exception, the CodeDeployAgent would be running.
 
 
 
