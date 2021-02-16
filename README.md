@@ -100,7 +100,11 @@ Hopefully, after adding the exception, the CodeDeployAgent would be running.
 
 Sanity check # 1 turned out to be the problem, so the pipeline is deploying successfully!!
 
+# Creating an AWS DevOps Pipeline in which infrastructure is provisioned through CloudFormation
 
+1. We will first create the necessary infrastructure using a CloudFormation template:
+   - VPC
+   - 2 Public 
 
 
 
